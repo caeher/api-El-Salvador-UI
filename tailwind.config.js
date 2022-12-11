@@ -6,8 +6,10 @@ module.exports = {
     './layouts/*.vue',
     './pages/*.vue',
     './pages/**/*.vue',
-    '*.vue'
+    '*.vue',
+    './utils/sweetalert.ts'
   ],
+  darkMode: 'class',
   theme: {
     extend: {},
   },
