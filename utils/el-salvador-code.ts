@@ -1,16 +1,58 @@
-export const elSalvadorCode = {
-    SLV1343: "Ahuachapan",
-    SLV1344: "Cabañas",
-    SLV1345: "Cuscatlán",
-    SLV1346: "La Libertad",
-    SLV1347: "La Paz",
-    SLV1348: "Sonsonate",
-    SLV1349: "San Salvador",
-    SLV1350: "La Unión",
-    SLV1351: "Morazán",
-    SLV1352: "San Miguel",
-    SLV1353: "San Vicente",
-    SLV1354: "Usulutám",
-    SLV1357: "Chalatenango",
-    SLV1358: "Santa Ana"
+export const elSalvadorCode:any = {
+    SLV1343: {
+        name: 'Ahuachapan',
+        component: 'Ahuachapan'
+    },
+    SLV1344: {
+        name: 'Cabañas',
+        component: 'Cabanas'
+    },
+    SLV1345: {
+        name: 'Cuscatlán',
+        component: 'Cuscatlan'
+    },
+    SLV1346: {
+        name: 'La Libertad',
+        component: 'LaLibertad'
+    },
+    SLV1347: {
+        name: 'La Paz',
+        component: 'LaPaz'
+    },
+    SLV1348: {
+        name: 'Sonsonate',
+        component: 'Sonsonate'
+    },
+    SLV1349: {
+        name: 'San Salvador',
+        component: 'SanSalvador'
+    },
+    SLV1350: {
+        name: 'La Unión',
+        component: 'LaUnion'
+    },
+    SLV1351: {
+        name: 'Morazán',
+        component: 'Morazan'
+    },
+    SLV1352: {
+        name: 'San Miguel',
+        component: 'SanMiguel'
+    },
+    SLV1353: {
+        name: 'San Vicente',
+        component: 'SanVicente'
+    },
+    SLV1354: {
+        name: 'Usulutám',
+        component: 'Usulutan'
+    },
+    SLV1357: {
+        name: 'Chalatenango',
+        component: 'Chalatenango'
+    },
+    SLV1358: {
+        name: 'Santa Ana',
+        component: 'Chalatenango'
+    }
 }
