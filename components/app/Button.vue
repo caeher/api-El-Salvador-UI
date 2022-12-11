@@ -70,8 +70,7 @@ const isIcon = computed(() => {
 .btn {
   @apply px-5 py-2 rounded-lg shadow;
   @apply cursor-pointer;
-  @apply ring ring-offset-1 ring-transparent;
-  @apply box-border;
+  @apply ring ring-offset-1 ring-offset-transparent focus:ring-offset-white ring-transparent;
   &.main {
     @apply bg-fuchsia-500 hover:bg-fuchsia-600 text-white;
     @apply focus:ring-fuchsia-400 active:ring-fuchsia-300;
