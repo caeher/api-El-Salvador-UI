@@ -1,7 +1,11 @@
 <script setup lang="ts">
 const emit = defineEmits(['maps'])
 function clickOnMap(e: any) {
-    emit('maps', e.target.getAttribute('id'))
+    if(e.target.getAttribute('id')=== null) {
+        emit('maps', e.target.parentElement.getAttribute('id'))
+    }else {
+        emit('maps', e.target.getAttribute('id'))
+    }
 }
 </script>
 <template>
