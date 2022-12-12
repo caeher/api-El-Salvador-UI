@@ -1,9 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     ssr: false,
+    routeRules: {
+        "/**": { cors: true }
+    },
     runtimeConfig: {
         public: {
-            iconSufix: '-svgrepo-com'
+            iconSufix: '-svgrepo-com',
+            fetchUri: 'http://localhost:8000'
         }
     }, 
     modules: [
@@ -13,20 +17,6 @@ export default defineNuxtConfig({
     plugins: [
         '~/plugins/custom-elements.ts'
     ],
-    vue: {
-        // compilerOptions: {
-        //     isCustomElement: (tag: string) => tag.startsWith('Map')
-        // }
-    },
-    // components: {
-    //     // dirs: [
-    //     //     {
-    //     //         path: '~/components/map',
-    //     //         global: true
-    //     //     },
-    //     //     '~/components'
-    //     // ]
-    // },
     tailwindcss: {
         cssPath: '~/assets/css/tailwind.css',
         configPath: './tailwind.config'
