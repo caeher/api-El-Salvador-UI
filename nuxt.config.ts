@@ -7,15 +7,12 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             iconSufix: '-svgrepo-com',
-            fetchUri: 'http://localhost:8000'
+            fetchUri: 'https://5d6f-190-87-160-21.ngrok.io'
         }
     }, 
     modules: [
         '@nuxtjs/tailwindcss',
         '@nuxtjs/color-mode'
-    ],
-    plugins: [
-        '~/plugins/custom-elements.ts'
     ],
     tailwindcss: {
         cssPath: '~/assets/css/tailwind.css',
@@ -28,6 +25,6 @@ export default defineNuxtConfig({
         classPrefix: '',
         classSuffix: '',
         storageKey: 'nuxt-color-mode'
-    }
+    },
 })
 
