@@ -14,6 +14,9 @@ export default defineNuxtConfig({
         '@nuxtjs/tailwindcss',
         '@nuxtjs/color-mode'
     ],
+    plugins: [
+        "~/plugins/clickOutside.ts"
+    ],
     tailwindcss: {
         cssPath: '~/assets/css/tailwind.css',
         configPath: './tailwind.config'
