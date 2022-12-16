@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { elSalvadorCode } from '~~/utils/el-salvador-code'
+import IDepartament from '~~/ts/interfaces/Departament'
+import IUseFetchResponse from '~~/ts/interfaces/UseFetchResponse'
 const { params: { departament } } = useRoute()
 const router = useRouter()
 const isComponent = ref(false)
@@ -32,16 +34,33 @@ function routerMap(maps: string | null) {
     }
 }
 
-const { data: departamentData, pending: departamentPending, error: departamentError } = await useAsyncData('departament', async () => {
+const { data: departamentData, refresh: departamentRefresh,pending: departamentPending } = <IUseFetchResponse<IDepartament>> await useAsyncData('departaments',async () => {
     if (useSecureParams(departament.toString())) {
         return $fetch(`${fetchUri}/departaments/${departament.toString().split('-').join(' ')}`)
+        
     }
 })
-
-if (departamentError.value || departamentData.value == undefined) {
-    showError({ statusCode: 404, statusMessage: 'Error' })
+console.log(departamentData)
+if (departamentData.value == undefined) {
+    throw createError({
+        statusCode: 404,
+        message: 'Not found',
+        fatal: true
+    })
 }
 
+const dataTable:{header: string[], body: object[]} = { header: [], body: []}
+console.log(departamentData)
+if(departamentData.value) {
+    dataTable.header.push(...['Municipio'])
+    dataTable.body.push(
+        ...departamentData.value?.muns.map((mun:{munname:string}) => {
+            return {
+                munname: mun.munname
+            }
+        })
+    )
+}
 
 </script>
 <template>
@@ -55,9 +74,15 @@ if (departamentError.value || departamentData.value == undefined) {
                     <component :is="asyncComponent" class="w-full" @maps="routerMap">
                     </component>
                 </template>
+
+                <template v-if="dataTable.header.length>0">
+                    <AppTable 
+                        :header="dataTable.header"
+                        :body="dataTable.body"
+                        />
+                </template>
             </AppProse>
             <AppEmptyContainer />
-            <AppImageGallery/>
         </AppNarrowContent>
     </div>
 </template>

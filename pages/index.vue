@@ -12,18 +12,31 @@ function routerMap(maps: string | null) {
         }
     }
 }
+
+const departaments = Object.values(elSalvadorCode).map((dep:any) => {
+    return {
+        name: dep.name,
+        municipalities_cout: Object.keys(dep.municipalities).length
+    }
+})
 </script>
 <template>
     <div>
-        <AppNarrowContent class="min-h-screen">
+        <AppSimpleContent class="min-h-screen">
             <AppProse>
                 <h1 class="text-center">
                     El Salvador
                 </h1>
                 <MapElSalvador @maps="routerMap" class="w-full"></MapElSalvador>
+            
+                <div class="mt-12">
+                    <AppTable 
+                    :header="['Departament', 'Municipalities count']"
+                    :body="departaments"
+                    />
+                </div>
             </AppProse>
             <AppEmptyContainer />
-            <AppImageGallery/>
-        </AppNarrowContent>
+        </AppSimpleContent>
     </div>
 </template>

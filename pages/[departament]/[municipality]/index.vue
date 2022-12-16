@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { elSalvadorCode } from '~~/utils/el-salvador-code';
+import { elSalvadorCode } from '~~/utils/el-salvador-code'
+import IUseFetchResponse from '~~/ts/interfaces/UseFetchResponse'
+import IMunicipality from '~~/ts/interfaces/Municipality'
 const {params: {departament: departamentParam, municipality: municipalityParam}} = useRoute()
 const {public: {fetchUri}} = useRuntimeConfig()
 
@@ -9,25 +11,46 @@ const [departament] = Object.values<{
 }>(elSalvadorCode).filter( (val:any) => val.name.toLowerCase() == departamentParam.toString().toLowerCase().split('-').join(' '))
 
 if(departament === undefined) {
-    showError({ statusCode: 404, statusMessage: 'Error' })
+    throw createError({
+        statusCode: 404,
+        message: 'Municipality not found',
+        fatal: true
+    })
 }
 const [municipality] :string[] = Object.values(departament.municipalities).filter( (val: string) => val.toLowerCase() == municipalityParam.toString().toLowerCase().split('-').join(' ') )
 
 if(municipality === undefined) {
-    showError({ statusCode: 404, statusMessage: 'Error' })
+    throw createError({
+        statusCode: 404,
+        message: 'Municipality not found',
+        fatal: true
+    })
 }
 
-const {data: municipalityData , error: municipalityError, pending: municipalityPending}  = await useAsyncData('municipality', async () => {
+const {data: municipalityData , pending: municipalityPending}  =<IUseFetchResponse<IMunicipality>> await useAsyncData('municipality', async () => {
     if(useSecureParams(municipality)) {
-        return $fetch(`${fetchUri}/municipalities/${municipality}`)
+        return $fetch(`${fetchUri}/municipalities/${municipality}?departament=${departamentParam.toString().toLowerCase().split('-').join(' ')}`)
     }
 })
 
-if(municipalityError.value) {
-    showError({ statusCode: 404, statusMessage: 'Error' })
+if(!municipalityData.value) {
+    throw createError({
+        statusCode: 404,
+        message: 'Municipality not found',
+        fatal: true
+    })
 }
 
-
+const dataTable = {
+    header: ['departament', 'isocode', 'zone'],
+    body: [
+        {
+            departament: municipalityData.value.departament.depname,
+            isocode: municipalityData.value.departament.isocode,
+            zone: municipalityData.value.departament.zone.zonename
+        }
+    ]
+}
 </script>
 <template>
     <AppNarrowContent>
@@ -35,8 +58,13 @@ if(municipalityError.value) {
             <h1 class="text-center break-words">
                 {{ municipalityData?.munname }}
             </h1>
+
+            <div class="pt-12">
+                <AppTable 
+                    :header="dataTable.header"
+                    :body="dataTable.body"/>
+            </div>
         </AppProse>
         <AppEmptyContainer />
-        <AppImageGallery/>
     </AppNarrowContent>
 </template>
