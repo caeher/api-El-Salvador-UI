@@ -80,8 +80,8 @@ const isIcon = computed(() => {
     @apply focus:ring-rose-400 active:ring-rose-300;
   }
   &.info {
-    @apply bg-violet-500 hover:bg-violet-600 text-white;
-    @apply focus:ring-violet-400 active:ring-violet-300;
+    @apply bg-indigo-500 hover:bg-indigo-600 text-white;
+    @apply focus:ring-indigo-400 active:ring-indigo-300;
   }
   &.success {
     @apply bg-emerald-500 hover:bg-emerald-600 text-white;
