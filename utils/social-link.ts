@@ -24,7 +24,7 @@ export const socialLinks: ISocialList = {
             name: 'Github',
             url: 'https://github.com',
             key: 'github',
-            icon: 'Github'
+            icon: 'github'
         }
     ]
 }
