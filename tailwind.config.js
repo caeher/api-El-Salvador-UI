@@ -6,13 +6,19 @@ module.exports = {
     './layouts/*.vue',
     './pages/*.vue',
     './pages/**/*.vue',
-    '*.vue'
+    '*.vue',
+    './utils/sweetalert.ts'
   ],
+  darkMode: 'class',
   theme: {
     extend: {},
   },
+  corePlugins: {
+    aspectRatio: false
+  },
   plugins: [
     require('@tailwindcss/forms'),
-    require('@tailwindcss/typography')
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio')
   ],
 }
