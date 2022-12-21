@@ -9,7 +9,7 @@ export default defineNuxtConfig({
             iconSufix: '-svgrepo-com',
             // fetchUri: 'http://127.0.0.1:8000',
             fetchUri: 'https://api-el-salvador-production.up.railway.app',
-            baseURL:  '/api-El-Salvador-UI/'
+            baseURL:  '/api-el-salvador-ui/'
         }
     }, 
     modules: [
@@ -32,7 +32,7 @@ export default defineNuxtConfig({
         storageKey: 'nuxt-color-mode'
     },
     app: {
-        baseURL: '/api-El-Salvador-UI/',
+        baseURL: '/api-el-salvador-ui/',
         rootId: 'ElSalvador'
     },
     experimental: {
