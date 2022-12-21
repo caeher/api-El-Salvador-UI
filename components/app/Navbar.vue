@@ -18,17 +18,23 @@ const isNavbarOpen = ref(false)
             <div id="collapse" class="hidden md:block">
                 <ul class="flex">
                     <li>
-                        <NuxtLink class="px-3 py-2 rounded-lg cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800" to="#">
+                        <NuxtLink 
+                            class="px-3 py-2 rounded-lg cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800" 
+                            to="/">
                             Home
                         </NuxtLink>
                     </li>
                     <li>
-                        <NuxtLink class="px-3 py-2 rounded-lg cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800" to="#">
+                        <NuxtLink 
+                            class="px-3 py-2 rounded-lg cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800" 
+                            to="/about">
                             About
                         </NuxtLink>
                     </li>
                     <li>
-                        <NuxtLink class="px-3 py-2 rounded-lg cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800" to="#">
+                        <NuxtLink 
+                            class="px-3 py-2 rounded-lg cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800" 
+                            to="/colaborate">
                             Colaborate
                         </NuxtLink>
                     </li>
