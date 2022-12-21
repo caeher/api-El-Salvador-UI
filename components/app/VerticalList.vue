@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { PropType } from 'vue';
 import IList  from '~~/ts/interfaces/IList';
-const {public: { iconSufix }} = useRuntimeConfig()
+const {public: { iconSufix, baseURL }} = useRuntimeConfig()
 const props = defineProps({
     list: {
         type: Object as PropType<IList>,
@@ -20,7 +20,7 @@ const props = defineProps({
                         class="block p-2.5 cursor-pointer dark:text-slate-300 rounded-lg dark:hover:bg-slate-800"
                         :to="item.url">
                         <template v-if="item.icon">
-                            <img :src="`svgs/${item.icon}${iconSufix}.svg`" class="w-4 h-4" />
+                            <img :src="`${baseURL}svgs/${item.icon}${iconSufix}.svg`" class="w-4 h-4" />
                         </template>
                         {{ item.name }}
                     </NuxtLink>
@@ -30,7 +30,7 @@ const props = defineProps({
                         :href="item.url"
                         :external="item.external">
                         <template v-if="item.icon">
-                            <img :src="`svgs/${item.icon}${iconSufix}.svg`" class="w-4 h-4" />
+                            <img :src="`${baseURL}svgs/${item.icon}${iconSufix}.svg`" class="w-4 h-4" />
                         </template>
                         {{ item.name }}
                     </NuxtLink>
