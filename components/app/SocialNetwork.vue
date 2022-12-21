@@ -19,7 +19,7 @@ const {public: {iconSufix}} = useRuntimeConfig()
                 v-for="item in list.items" :key="item.key">
                 <template v-if="item.icon">
                     <NuxtLink :href="item.url" target="_blank" :external="true">
-                        <img class="w-6 h-6" :src="`/svgs/${item.icon}${iconSufix}.svg`" :alt="`${item.name} icon`"/>
+                        <img class="w-6 h-6" :src="`svgs/${item.icon}${iconSufix}.svg`" :alt="`${item.name} icon`"/>
                     </NuxtLink>
                 </template>
                 <template v-else>
