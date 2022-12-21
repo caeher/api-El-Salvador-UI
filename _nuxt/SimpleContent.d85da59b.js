@@ -1,0 +1,1 @@
+import{_ as o,o as n,c as t,a as c,r as s}from"./entry.cb161ccd.js";const a={},r={class:"overflow-hidden py-12 md:px-8 lg:px-1 container sm:container lg:container xl:container 2xl:container mx-auto"},_={class:"px-2 md:px-3"};function d(e,i){return n(),t("div",r,[c("div",_,[s(e.$slots,"default")])])}const p=o(a,[["render",d]]);export{p as _};

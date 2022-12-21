@@ -1,0 +1,1 @@
+import{_ as s,o,c as r,a as t,r as a}from"./entry.cb161ccd.js";const c={},n={class:"px-7 prose md:prose-xl prose-slate prose-fuchsia dark:prose-invert mx-auto"},_={class:"lg:px-3 py-6"};function p(e,d){return o(),r("div",n,[t("div",_,[a(e.$slots,"default")])])}const i=s(c,[["render",p]]);export{i as _};
