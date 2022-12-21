@@ -7,7 +7,8 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             iconSufix: '-svgrepo-com',
-            fetchUri: 'https://5d6f-190-87-160-21.ngrok.io'
+            // fetchUri: 'http://127.0.0.1:8000',
+            fetchUri: 'https://api-el-salvador-production.up.railway.app'
         }
     }, 
     modules: [
@@ -29,5 +30,9 @@ export default defineNuxtConfig({
         classSuffix: '',
         storageKey: 'nuxt-color-mode'
     },
+    app: {
+        baseURL: '/api-el-salvador-ui/',
+        rootId: 'ElSalvador'
+    }
 })
 
