@@ -2,24 +2,24 @@
 import { elSalvadorCode } from '~~/utils/el-salvador-code'
 import IUseFetchResponse from '~~/ts/interfaces/UseFetchResponse'
 import IMunicipality from '~~/ts/interfaces/Municipality'
-const {params: {departament: departamentParam, municipality: municipalityParam}} = useRoute()
-const {public: {fetchUri}} = useRuntimeConfig()
+const { params: { departament: departamentParam, municipality: municipalityParam } } = useRoute()
+const { public: { fetchUri } } = useRuntimeConfig()
 
 const [departament] = Object.values<{
     name: string,
     municipalities: Object
-}>(elSalvadorCode).filter( (val:any) => val.name.toLowerCase() == departamentParam.toString().toLowerCase().split('-').join(' '))
+}>(elSalvadorCode).filter((val: any) => val.name.toLowerCase() == departamentParam.toString().toLowerCase().split('-').join(' '))
 
-if(departament === undefined) {
+if (departament === undefined) {
     throw createError({
         statusCode: 404,
         message: 'Municipality not found',
         fatal: true
     })
 }
-const [municipality] :string[] = Object.values(departament.municipalities).filter( (val: string) => val.toLowerCase() == municipalityParam.toString().toLowerCase().split('-').join(' ') )
+const [municipality]: string[] = Object.values(departament.municipalities).filter((val: string) => val.toLowerCase() == municipalityParam.toString().toLowerCase().split('-').join(' '))
 
-if(municipality === undefined) {
+if (municipality === undefined) {
     throw createError({
         statusCode: 404,
         message: 'Municipality not found',
@@ -27,13 +27,13 @@ if(municipality === undefined) {
     })
 }
 
-const {data: municipalityData , pending: municipalityPending}  =<IUseFetchResponse<IMunicipality>> await useAsyncData('municipality', async () => {
-    if(useSecureParams(municipality)) {
+const { data: municipalityData, pending: municipalityPending } = <IUseFetchResponse<IMunicipality>>await useAsyncData('municipality', async () => {
+    if (useSecureParams(municipality)) {
         return $fetch(`${fetchUri}/municipalities/${municipality}?departament=${departamentParam.toString().toLowerCase().split('-').join(' ')}`)
     }
 })
 
-if(!municipalityData.value) {
+if (!municipalityData.value) {
     throw createError({
         statusCode: 404,
         message: 'Municipality not found',
@@ -54,17 +54,22 @@ const dataTable = {
 </script>
 <template>
     <AppNarrowContent>
-        <AppProse>
-            <h1 class="text-center break-words">
-                {{ municipalityData?.munname }}
-            </h1>
+        <div class="grid grid-cols-1 lg:grid-cols-12">
+            <div class="lg:col-span-3"></div>
+            <div class="lg:col-span-6">
+                <AppContentContainer>
+                    <template #title>
+                        {{ municipalityData?.munname }}
 
-            <div class="pt-12">
-                <AppTable 
-                    :header="dataTable.header"
-                    :body="dataTable.body"/>
+                    </template>
+                    <template #body>
+                        <div class="px-3 mt-6">
+                            <AppTable :header="dataTable.header" :body="dataTable.body" />
+                        </div>
+                    </template>
+                </AppContentContainer>
             </div>
-        </AppProse>
-        <AppEmptyContainer />
+            <div class="lg:col-span-3"></div>
+        </div>
     </AppNarrowContent>
 </template>
