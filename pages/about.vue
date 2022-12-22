@@ -14,9 +14,9 @@ import { teams } from '~~/utils/teams';
 
                 <p>Es la parte que se encarga de la comunicación con la base de datos que contiene la información sobre los departamentos y municipios del país </p>
 
-                <p>Para realizarlo se eligió a <a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI </a>, un framework de Python para realizar API's con arquitectura REST el cual es igual de rápido que opciones en NodeJS como Express.js</p>
+                <p>Para realizarlo se eligió a <a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI </a>, un framework de Python para realizar API's con arquitectura REST el cual es igual de rápido que opciones en Node.js como Express.js</p>
 
-                <p>Para la información de los códigos postales se desarrolló un scraper sencillo con <a href="https://beautiful-soup-4.readthedocs.io/en/latest/" target="_blank"> BeautifulSoupl</a> , una biblioteca para obtener información de archivos HTML y XML</p>
+                <p>La obtención de la información de códigos postales se logró mediante un scraper sencillo desarrollado con <a href="https://beautiful-soup-4.readthedocs.io/en/latest/" target="_blank"> BeautifulSoup</a> , una biblioteca para obtener información de archivos HTML y XML</p>
 
 
                 <h2>Colaboración</h2>
