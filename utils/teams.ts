@@ -12,5 +12,17 @@ export const teams: ITeam[] = [
                 icon: 'github'
             }
         ]
+    }, 
+    {
+        image: 'https://i.imgur.com/ScanIMw.jpg',
+        name: 'Stanley Melgar',
+        occupation: 'Data Engineer',
+        socialLinks: [
+            {
+                name: 'Github',
+                url: 'https://github.com/standoge',
+                icon: 'github'
+            }
+        ]
     }
 ]
