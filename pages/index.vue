@@ -1,16 +1,46 @@
 <script setup lang="ts">
+import { e } from 'unimport/dist/types-488f6d65';
 import { elSalvadorCode } from '~~/utils/el-salvador-code';
+import {Modal, Toast} from '~~/utils/sweetalert'
 
 const router = useRouter()
-function routerMap(maps: string | null) {
+const {public: {baseURL}} = useRuntimeConfig()
+function beforeRouterMap(maps: string | null) {
     if (maps) {
-        if (useSecureParams(elSalvadorCode[maps].name)) {
-            const p = elSalvadorCode[maps].name.toLowerCase().split(' ').join('-')
-            router.push({
-                path: `/${p}`
-            })
-        }
+        const p = elSalvadorCode[maps].name
+        Modal.fire({
+            title: p,
+            footer: 'Esta a punto de ser redirigido al departamento',
+            imageUrl: baseURL + elSalvadorCode[maps].image,
+            showCloseButton: false,
+            showDenyButton: true,
+            showConfirmButton: true,
+            confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!'
+        }).then((result) => {
+            if(result.isConfirmed) {
+                routerMap(p)
+            } else if(result.isDenied || result.isDismissed) {
+                Toast.fire({
+                    title: 'Acción cancelada',
+                    icon: 'info'
+                })
+            }
+        }).catch((error) => {
+
+        })
     }
+}
+
+function routerMap(maps: string) {
+    console.log(maps)
+    let p = maps.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    if (useSecureParams(p)) {
+        p = p.toLowerCase().split(' ').join('-')
+        router.push({
+            path: `/${p}`
+        })
+    }
+
 }
 
 const departaments = Object.values(elSalvadorCode).map((dep: any) => {
@@ -27,7 +57,7 @@ const departaments = Object.values(elSalvadorCode).map((dep: any) => {
                 <h1 class="text-center">
                     El Salvador
                 </h1>
-                <MapElSalvador @maps="routerMap" class="w-full"></MapElSalvador>
+                <MapElSalvador @maps="beforeRouterMap" class="w-full"></MapElSalvador>
 
             </AppProse>
             <div class="px-3 sm:px-12 md:px-20 lg:px-32 xl:px-40">
