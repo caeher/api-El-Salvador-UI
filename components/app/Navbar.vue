@@ -7,7 +7,7 @@ const isNavbarOpen = ref(false)
         <div class="flex flex-wrap justify-between items-center">
             <div id="brand">
                 <NuxtLink to="/">
-                    Brand
+                    Maquilishuat
                 </NuxtLink>
             </div>
             <div id="burger" class="block md:hidden">
