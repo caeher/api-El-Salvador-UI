@@ -140,18 +140,17 @@ if (departamentData.value) {
                 </div>
                 <div class="lg:col-span-3 sticky top-20">
                     <div class="">
-                        <div class="bg-white dark:bg-slate-900 drop-shadow rounded-lg p-3">
+                        <div class="bg-white dark:text-slate-500 dark:bg-slate-900 drop-shadow rounded-lg p-3">
                             <h2 class="text-4xl font-bold text-center pb-3">{{ zoneData?.zonename }}</h2>
-                            <hr>
-                            <p class="pt-3">Otros departamentos en esta zona</p>
-                            <ul role="list" class="divide-y divide-gray-200">
+                            <hr class="dark:border-slate-500">
+                            <ul role="list" class="divide-y divide-gray-200 dark:divide-slate-800">
                                 <li 
                                     v-for="(dep, index) in zoneData?.departaments"
                                     :key="`zone-${index}`">
                                     <NuxtLink class="px-4 py-4 sm:px-0 flex justify-between" :href="`${dep.depname.toLowerCase().split(' ').join('-').normalize('NFD').replace(/[\u0300-\u036f]/g, '')}`">
                                         {{  dep.depname }}
                                         <AppBadge>
-                                            {{  dep.muns.length }}
+                                            {{  dep.muns.length }} Municipios
                                         </AppBadge>
                                     </NuxtLink>
                                 </li>
