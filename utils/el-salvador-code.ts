@@ -1,6 +1,7 @@
 export const elSalvadorCode:any = {
     SLV1343: {
-        name: 'Ahuachapan',
+        name: 'Ahuachapán',
+        image: '/images/departamentos/ahuachapan.jpg',
         municipalities: {
             'SLV1343SANFRANCISCOMELENDEZ': 'San Francisco Menendez',
             'SLV1343TACUBA': 'Tacuba',
@@ -17,7 +18,8 @@ export const elSalvadorCode:any = {
         }
     },
     SLV1344: {
-        name: 'Cabanas',
+        name: 'Cabañas',
+        image: '/images/departamentos/cabanas.jpg',
         municipalities: {
             'SLV1344GUACOTECTI': 'Guacotecti',
             'SLV1344SANISIDRO': 'San Isidro',
@@ -31,7 +33,8 @@ export const elSalvadorCode:any = {
         }
     },
     SLV1345: {
-        name: 'Cuscatlan',
+        name: 'Cuscatlán',
+        image: '/images/departamentos/cuscatlan.jpg',
         municipalities: {
             'SLVCUSSANTACRUZANALQUITO': 'Santa Cruz Analquito',
             'SLVCUSCANDELARIA': 'Candelaria',
@@ -53,6 +56,7 @@ export const elSalvadorCode:any = {
     },
     SLV1346: {
         name: 'La Libertad',
+        image: '/images/departamentos/la-libertad.jpg',
         municipalities: {
             'SLV1346JICALAPA': 'Jicalapa',
             'SLV1346TEOTEPEQUE': 'Teotepeque',
@@ -80,6 +84,7 @@ export const elSalvadorCode:any = {
     },
     SLV1347: {
         name: 'La Paz',
+        image: '/images/departamentos/la-paz.jpg',
         municipalities: {
             'SLVLPASANLUISTALPA': 'San Luis Talpa',
             'SLVLPAOLOCUILTA': 'Olocuilta',
@@ -107,6 +112,7 @@ export const elSalvadorCode:any = {
     },
     SLV1348: {
         name: 'Sonsonate',
+        image: '/images/departamentos/sonsonate.jpg',
         municipalities: {
             'SLVSONACAJUTLA': 'Acajutla',
             'SLVSONSANTODOMINDODEGUZMAN': 'Santo Domingo de Guzman',
@@ -128,6 +134,7 @@ export const elSalvadorCode:any = {
     },
     SLV1349: {
         name: 'San Salvador',
+        image: '/images/departamentos/san-salvador.jpg',
         municipalities: {
             'SLVSSAROSARIODEMORA': 'Rosario de Mora',
             'SLVSSAPANCHIMALCO': 'Panchimalco',
@@ -152,7 +159,8 @@ export const elSalvadorCode:any = {
         }
     },
     SLV1350: {
-        name: 'La Union',
+        name: 'La Unión',
+        image: '/images/departamentos/la-union.jpg',
         municipalities: {
             'SLVLUNINTIPUCA': 'Intipuca',
             'SLVLUNLISLIQUE': 'Lislique',
@@ -174,7 +182,8 @@ export const elSalvadorCode:any = {
         }
     },
     SLV1351: {
-        name: 'Morazan',
+        name: 'Morazán',
+        image: '/images/departamentos/morazan.jpg',
         municipalities: {
             'SLVMORELDIVISADERO': 'Reldivisadero',
             'SLVMORJOCORO': 'Jocoro',
@@ -206,6 +215,7 @@ export const elSalvadorCode:any = {
     },
     SLV1352: {
         name: 'San Miguel',
+        image: '/images/departamentos/san-miguel.jpg',
         municipalities: {
             'SLVSMISANANTONIO': 'San Antonio',
             'SLVSMISANGERARDO': 'San Gerardo',
@@ -231,6 +241,7 @@ export const elSalvadorCode:any = {
     },
     SLV1353: {
         name: 'San Vicente',
+        image: '/images/departamentos/san-vicente.jpg',
         municipalities: {
             'SLVSVISANSEBASTIAN': 'San Sebastian',
             'SLVSVISANTODOMINGO': 'Santo Domingo',
@@ -248,7 +259,8 @@ export const elSalvadorCode:any = {
         }
     },
     SLV1354: {
-        name: 'Usulutan',
+        name: 'Usulután',
+        image: '/images/departamentos/usulutan.jpg',
         municipalities: {
             'SLVUSUNUEVAGRANADA': 'Nueva Granada',
             'SLVUSUESTANZUELA': 'Estanzuela',
@@ -277,6 +289,7 @@ export const elSalvadorCode:any = {
     },
     SLV1357: {
         name: 'Chalatenango',
+        image: '/images/departamentos/chalatenango.jpg',
         municipalities: {
             'SLVCHANUEVACONCEPCION': 'Nueva Concepcion',
             'SLVCHAAGUACALIENTE': 'Aguacaliente',
@@ -315,6 +328,7 @@ export const elSalvadorCode:any = {
     },
     SLV1358: {
         name: 'Santa Ana',
+        image: '/images/departamentos/santa-ana.webp',
         municipalities: {
             'SLVSANSANTAANA': 'Santa Ana',
             'SLVSANELCONGO': 'El Congo',
