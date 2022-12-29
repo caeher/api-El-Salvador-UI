@@ -7,7 +7,8 @@ module.exports = {
     './pages/*.vue',
     './pages/**/*.vue',
     '*.vue',
-    './utils/sweetalert.ts'
+    './utils/sweetalert.ts',
+    './node_modules/@caeher/**/*.vue'
   ],
   darkMode: 'class',
   theme: {

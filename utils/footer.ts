@@ -2,13 +2,20 @@ import IList from "~~/ts/interfaces/IList"
 
 export const footerList:IList[] = [
     {
-        name: 'Branding',
+        name: 'Maquilishuat',
         items: [
             {
                 name: 'About',
                 url: '/about',
                 external: false,
                 key: 'about',
+                icon: undefined
+            },
+            {
+                name: 'Blog',
+                url: '/blog',
+                external: false,
+                key: 'blog',
                 icon: undefined
             }
         ]
