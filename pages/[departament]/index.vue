@@ -120,8 +120,8 @@ if (departamentData.value) {
             </AppProse>
 
             <div class="grid items-start grid-flow-dense grid-rows-1 grid-cols-1 lg:grid-cols-12 mt-24 gap-3">
-                <div class="lg:col-span-3"></div>
-                <div class="lg:col-span-6">
+                <div class="lg:col-span-2"></div>
+                <div class="lg:col-span-7">
                     <AppContentContainer>
                         <template #title>
                             {{ departamentData?.depname }}
@@ -130,7 +130,7 @@ if (departamentData.value) {
                             <AppProse class="mx-auto">
                                 <p>{{ scrapperData['Summary'] }}</p>
                             </AppProse>
-                            <div class="px-3">
+                            <div class="px-3 lg:px-10">
                                 <template v-if="dataTable.header.length > 0">
                                     <AppTable :header="dataTable.header" :body="dataTable.body" />
                                 </template>
@@ -141,7 +141,7 @@ if (departamentData.value) {
                 <div class="lg:col-span-3 sticky top-20">
                     <div class="">
                         <div class="bg-white dark:text-slate-500 dark:bg-slate-900 drop-shadow rounded-lg p-3">
-                            <h2 class="text-4xl font-bold text-center pb-3">{{ zoneData?.zonename }}</h2>
+                            <h2 class="text-2xl font-bold text-center pb-3">Zona {{ zoneData?.zonename }}</h2>
                             <hr class="dark:border-slate-500">
                             <ul role="list" class="divide-y divide-gray-200 dark:divide-slate-800">
                                 <li 
@@ -149,7 +149,7 @@ if (departamentData.value) {
                                     :key="`zone-${index}`">
                                     <NuxtLink class="px-4 py-4 sm:px-0 flex justify-between" :href="`${dep.depname.toLowerCase().split(' ').join('-').normalize('NFD').replace(/[\u0300-\u036f]/g, '')}`">
                                         {{  dep.depname }}
-                                        <AppBadge>
+                                        <AppBadge type="info">
                                             {{  dep.muns.length }} Municipios
                                         </AppBadge>
                                     </NuxtLink>
