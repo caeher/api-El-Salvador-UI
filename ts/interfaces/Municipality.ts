@@ -1,6 +1,6 @@
 export default interface IMunicipality {
     munname: string,
-    departament: {
+    department: {
         depname: string,
         isocode: string,
         zone: {

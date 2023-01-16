@@ -31,7 +31,7 @@ const isIcon = computed(() => {
 
 <style scoped lang="postcss">
 .badge {
-  @apply px-5 py-0.5 rounded-full shadow;
+  @apply px-2 py-0.5 rounded-full;
   &.main {
     @apply bg-fuchsia-200 hover:bg-fuchsia-300 text-fuchsia-700;
   }
@@ -39,7 +39,7 @@ const isIcon = computed(() => {
     @apply bg-rose-200 hover:bg-rose-300 text-rose-700;
   }
   &.info {
-    @apply bg-indigo-200 hover:bg-indigo-300 text-indigo-700;
+    @apply border-2 border-gray-300 dark:border-sky-500  text-indigo-700;
   }
   &.success {
     @apply bg-emerald-200 hover:bg-emerald-300 text-emerald-700;

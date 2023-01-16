@@ -41,7 +41,7 @@ function routerMap(maps: string | null) {
 
 const { data: departamentData, refresh: departamentRefresh, pending: departamentPending } = <AsyncData<IDepartament, Error>>await useAsyncData('departaments', async () => {
     if (useSecureParams(departament.toString())) {
-        return $fetch(`${fetchUri}/departaments/${departament.toString().split('-').join(' ')}`)
+        return $fetch(`${fetchUri}/departments/${departament.toString().split('-').join(' ')}`)
 
     }
 })
@@ -68,7 +68,7 @@ const { data: scrapperData, error: scrapperError, pending: scrapperPending } = <
     if (depScrapper.includes(' ')) {
         depScrapper = depScrapper.split(' ').join('_')
     }
-    return $fetch(`${fetchUri}/scraper/${depScrapper}`)
+    return $fetch(`${fetchUri}/scraper/zipcodes/${depScrapper}`)
 })
 
 // Fill table data
@@ -107,6 +107,9 @@ if (departamentData.value) {
     )
 }
 
+definePageMeta({
+    layout: 'ui'
+})
 
 </script>
 <template>
@@ -120,8 +123,8 @@ if (departamentData.value) {
             </AppProse>
 
             <div class="grid items-start grid-flow-dense grid-rows-1 grid-cols-1 lg:grid-cols-12 mt-24 gap-3">
-                <div class="lg:col-span-2"></div>
-                <div class="lg:col-span-7">
+                <div class="lg:col-span-1"></div>
+                <div class="lg:col-span-7 relative top-12">
                     <AppContentContainer>
                         <template #title>
                             {{ departamentData?.depname }}
@@ -130,7 +133,7 @@ if (departamentData.value) {
                             <AppProse class="mx-auto">
                                 <p>{{ scrapperData['Summary'] }}</p>
                             </AppProse>
-                            <div class="px-3 lg:px-10">
+                            <div class="">
                                 <template v-if="dataTable.header.length > 0">
                                     <AppTable :header="dataTable.header" :body="dataTable.body" />
                                 </template>
@@ -138,16 +141,16 @@ if (departamentData.value) {
                         </template>
                     </AppContentContainer>
                 </div>
-                <div class="lg:col-span-3 sticky top-20">
+                <div class="lg:col-span-4 sticky top-20">
                     <div class="">
-                        <div class="bg-white dark:text-slate-500 dark:bg-slate-900 drop-shadow rounded-lg p-3">
-                            <h2 class="text-2xl font-bold text-center pb-3">Zona {{ zoneData?.zonename }}</h2>
-                            <hr class="dark:border-slate-500">
-                            <ul role="list" class="divide-y divide-gray-200 dark:divide-slate-800">
+                        <div class="dark:text-slate-500 mq-border drop-shadow rounded-lg p-3 sm:p-6">
+                            <h2 class="text-2xl uppercase mq-clip-text font-bold text-center pb-3">Zona {{ zoneData?.zonename }}</h2>
+                            <hr class="dark:border-gray-900 my-6">
+                            <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-900">
                                 <li 
-                                    v-for="(dep, index) in zoneData?.departaments"
+                                    v-for="(dep, index) in zoneData?.departments"
                                     :key="`zone-${index}`">
-                                    <NuxtLink class="px-4 py-4 sm:px-0 flex justify-between" :href="`${dep.depname.toLowerCase().split(' ').join('-').normalize('NFD').replace(/[\u0300-\u036f]/g, '')}`">
+                                    <NuxtLink class="px-2 py-4 flex justify-between" :href="`${dep.depname.toLowerCase().split(' ').join('-').normalize('NFD').replace(/[\u0300-\u036f]/g, '')}`">
                                         {{  dep.depname }}
                                         <AppBadge type="info">
                                             {{  dep.muns.length }} Municipios
