@@ -1,0 +1,12 @@
+.text-maquilishuat {
+  @apply bg-clip-text text-transparent bg-gradient-to-tr from-fuchsia-500 via-violet-500 to-pink-700;
+}
+  /* pb-6 */
+
+.mq-border {
+  @apply border-4 border-gray-300 dark:border-sky-500;
+}
+
+.mq-clip-text {
+  @apply bg-clip-text bg-gradient-to-tr from-gray-400 to-slate-400 dark:from-blue-500 dark:via-sky-400 dark:to-indigo-600 text-transparent;
+}

@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import {resolve} from 'path'
+import { resolve } from 'path'
+import { navbar } from './utils/navbar'
 export default defineNuxtConfig({
     ssr: false,
     routeRules: {
@@ -10,7 +11,8 @@ export default defineNuxtConfig({
             iconSufix: '-svgrepo-com',
             // fetchUri: 'http://127.0.0.1:8000',
             fetchUri: 'https://api-el-salvador-production.up.railway.app',
-            baseURL: '/api-el-salvador-ui/'
+            baseURL: '/api-el-salvador-ui/',
+            navbar
         }
     },
     modules: [
@@ -23,7 +25,7 @@ export default defineNuxtConfig({
         "~/plugins/clickOutside.ts"
     ],
     tailwindcss: {
-        cssPath: '~/assets/css/tailwind.css',
+        cssPath: '~/assets/css/index.css',
         configPath: './tailwind.config'
     },
     colorMode: {
@@ -48,7 +50,18 @@ export default defineNuxtConfig({
                 prefix: '/blog', // All contents inside this source will be prefixed with `/blog`
                 base: resolve(__dirname, 'content')
             }
-        }
+        },
+        highlight: {
+            theme: {
+              default: 'github-dark',
+              dark: 'github-dark',
+              sepia: 'monokai'
+            }
+          },
+          documentDriven: true
+    },
+    nitro: {
+        preset: 'service-worker'
     }
 })
 

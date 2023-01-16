@@ -1,17 +1,22 @@
 <template>
-  <NuxtLayout>
-    <NuxtPage />
-    <AppSpeedDial />
-  </NuxtLayout>
+  <div>
+    <NuxtLayout>
+      <NuxtPage />
+      <AppSpeedDial />
+    </NuxtLayout>
+  </div>
 </template>
 
 <style lang="postcss">
-html, body {
+html,
+body {
   @apply h-full;
   /* @apply bg-gradient-to-tr */
 }
+
+html,
 body {
   /* @apply bg-slate-100 dark:bg-slate-900/95; */
-  @apply dark:bg-gradient-to-l dark:from-black dark:via-gray-900 dark:to-black
+  @apply dark:bg-black;
 }
 </style>

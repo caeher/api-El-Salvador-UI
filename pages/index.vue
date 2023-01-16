@@ -49,6 +49,11 @@ const departaments = Object.values(elSalvadorCode).map((dep: any) => {
         municipalities_cout: Object.keys(dep.municipalities).length
     }
 })
+
+
+definePageMeta({
+    layout: 'ui'
+})
 </script>
 <template>
     <div>

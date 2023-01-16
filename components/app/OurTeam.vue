@@ -17,7 +17,7 @@ const {public: {iconSufix}} = useRuntimeConfig()
     <div class="overflow-hidden relative">
         <ProfilePolyfonHexagon class="absolute" />
     </div>
-    <div class="bg-white dark:bg-slate-900">
+    <div class="bg-white dark:bg-black/50">
         <div class="mx-auto max-w-7xl py-12 px-4 text-center sm:px-6 lg:px-8 lg:py-24">
             <div class="space-y-12">
                 <div class="space-y-5 sm:mx-auto sm:max-w-xl sm:space-y-4 lg:max-w-5xl">
@@ -26,7 +26,7 @@ const {public: {iconSufix}} = useRuntimeConfig()
                 </div>
                 <ul role="list"
                     class="mx-auto space-y-16 sm:grid sm:grid-cols-2 sm:gap-16 sm:space-y-0 lg:max-w-5xl lg:grid-cols-3">
-                    <li v-for="(team, index) in teamGroup" :key="index" class="bg-slate-50 dark:bg-slate-800 p-6 rounded-lg drop-shadow">
+                    <li v-for="(team, index) in teamGroup" :key="index" class="bg-slate-50 dark:bg-black p-6 rounded-lg drop-shadow">
                         <div class="space-y-6">
                             <div class="h-full">
                                 <ProfileAvatar class="mx-auto h-44 w-40" :image="team.image"/>

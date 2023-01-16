@@ -12,7 +12,7 @@ const props = defineProps({
 const {public: {iconSufix, baseURL}} = useRuntimeConfig()
 </script>
 <template>
-    <nav class="bg-transparent">
+    <nav class="bg-transparent py-32 dark:bg-black/50">
         <h5 class="text-xl text-slate-700 font-bold text-center">Follow</h5>
         <ul class="flex justify-center mt-6 gap-3">
             <li 

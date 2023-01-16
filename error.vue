@@ -3,11 +3,14 @@ const props = defineProps({
     error: Object
 })
 const errorHandler = () => clearError({ redirect: '/' })
-console.log(props.error)
+
+definePageMeta({
+    layout: 'ui'
+})
 </script>
 <template>
     <div>
-        <AppNavbar />
+        <!-- <AppNavbar /> -->
         <div class="min-h-screen px-3 sm:px-12 md:px-24 lg:px-32 xl:px-40 py-24">
             <AppSimpleContent>
                 <AppProse>
@@ -43,7 +46,7 @@ console.log(props.error)
                 </AppProse>
             </AppSimpleContent>
         </div>
-        <AppSpeedDial />
-        <AppFooter />
+        <!-- <AppSpeedDial /> -->
+        <!-- <AppFooter /> -->
     </div>
 </template>
