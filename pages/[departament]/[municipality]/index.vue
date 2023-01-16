@@ -11,6 +11,7 @@ const [departament] = Object.values<{
     municipalities: Object
 }>(elSalvadorCode).filter((val: any) => val.name.toLowerCase() == departamentParam.toString().toLowerCase().split('-').join(' '))
 
+
 if (departament === undefined) {
     throw createError({
         statusCode: 404,
@@ -18,8 +19,8 @@ if (departament === undefined) {
         fatal: true
     })
 }
-const [municipality]: string[] = Object.values(departament.municipalities).filter((val: string) => val.toLowerCase() == municipalityParam.toString().toLowerCase().split('-').join(' '))
-
+const municipio = municipalityParam.toString().toLowerCase().split('-').join(' ')
+const [municipality]: string[] = Object.values(departament.municipalities).filter((val: string) => val.toLowerCase() == municipio)
 if (municipality === undefined) {
     throw createError({
         statusCode: 404,
@@ -29,10 +30,11 @@ if (municipality === undefined) {
 }
 
 const { data: municipalityData, pending: municipalityPending } = <IUseFetchResponse<IMunicipality>>await useAsyncData('municipality', async () => {
+    console.log(municipality)
     if (useSecureParams(municipality)) {
         return $fetch(`${fetchUri}/municipalities/${municipality}?departament=${departamentParam.toString().toLowerCase().split('-').join(' ')}`)
     }
-}, { lazy: true })
+})
 
 if (!municipalityData.value) {
     throw createError({
@@ -54,7 +56,7 @@ const dataTable = {
 
 const { data: images, pending: imagesPending } = <AsyncData<string[], Error>> await useAsyncData('images', async () => {
     return $fetch(`${fetchUri}/scraper/images/${municipality}`)
-}, { lazy: true })
+})
 console.log(imagesPending, municipalityPending)
 definePageMeta({
     layout: 'ui'
