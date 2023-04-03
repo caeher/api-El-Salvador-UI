@@ -1,8 +1,7 @@
 <script setup lang="ts">
+import {AsyncData} from '#app';
 import { elSalvadorCode } from '~~/utils/el-salvador-code'
-import IUseFetchResponse from '~~/ts/interfaces/UseFetchResponse'
 import IMunicipality from '~~/ts/interfaces/Municipality'
-import { AsyncData } from '#app';
 const { params: { departament: departamentParam, municipality: municipalityParam } } = useRoute()
 const { public: { fetchUri, baseURL } } = useRuntimeConfig()
 
@@ -29,12 +28,16 @@ if (municipality === undefined) {
     })
 }
 
-const { data: municipalityData, pending: municipalityPending } = <IUseFetchResponse<IMunicipality>>await useAsyncData('municipality', async () => {
-    console.log(municipality)
+const { data: municipalityData, pending: municipalityPending } = <AsyncData<IMunicipality, Error>>await useAsyncData('municipality', async () => {
     if (useSecureParams(municipality)) {
-        return $fetch(`${fetchUri}/municipalities/${municipality}?departament=${departamentParam.toString().toLowerCase().split('-').join(' ')}`)
+        return $fetch(`${fetchUri}/municipalities/${municipality}?department=${departamentParam.toString().toLowerCase().split('-').join(' ')}`)
     }
-})
+}, {transform: (data) => {
+    if (Array.isArray(data) && data.length > 0) {
+        return data[0];
+    }
+    return null;
+}})
 
 if (!municipalityData.value) {
     throw createError({
@@ -43,6 +46,7 @@ if (!municipalityData.value) {
         fatal: true
     })
 }
+
 const dataTable = {
     header: ['departament', 'isocode', 'zone'],
     body: [
@@ -55,7 +59,7 @@ const dataTable = {
 }
 
 const { data: images, pending: imagesPending } = <AsyncData<string[], Error>> await useAsyncData('images', async () => {
-    return $fetch(`${fetchUri}/scraper/images/${municipality}`)
+    return $fetch(`${fetchUri}/scraper/images/municipalities/${municipality}`)
 })
 console.log(imagesPending, municipalityPending)
 definePageMeta({
