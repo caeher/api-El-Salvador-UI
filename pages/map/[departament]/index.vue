@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { elSalvadorCode } from '~~/utils/el-salvador-code'
-import IDepartament from '~~/ts/interfaces/Departament'
 import { AsyncData } from '#app';
+import IDepartament from '~~/ts/interfaces/Departament'
 import { IZone } from '~~/ts/interfaces/Zone';
+import { redirectMap } from '~~/utils/map/redirect-map';
 
 const { params: { departament } } = useRoute()
-const router = useRouter()
 const isComponent = ref(false)
 let asyncComponent: any
 const { public: { fetchUri } } = useRuntimeConfig()
@@ -18,26 +17,11 @@ if (!departament) {
     })
 } else {
     asyncComponent = defineAsyncComponent(() => {
-        return import(`../../components/map/SV/${useComponentParse(departament.toString())}.vue`)
+        return import(`../../../components/map/SV/${useComponentParse(departament.toString())}.vue`)
     })
     isComponent.value = true
 }
 
-function routerMap(maps: string | null) {
-    if (maps) {
-        const slvCodeValue = Object.values(elSalvadorCode)
-        const dep: any[] = slvCodeValue.filter((val: any) => val.municipalities[maps] !== undefined)
-        if (dep.length == 1) {
-            const municipality = dep[0].municipalities[maps]
-            if (useSecureParams(municipality)) {
-                const p = dep[0].name.toLowerCase().split(' ').join('-')
-                router.push({
-                    path: `/${p}/${municipality.toLowerCase().split(' ').join('-')}`
-                })
-            }
-        }
-    }
-}
 
 const { data: departamentData, refresh: departamentRefresh, pending: departamentPending } = <AsyncData<IDepartament, Error>>await useAsyncData('departaments', async () => {
     if (useSecureParams(departament.toString())) {
@@ -74,6 +58,7 @@ const { data: scrapperData, error: scrapperError, pending: scrapperPending } = <
 // Fill table data
 
 const dataTable: { header: string[], body: object[] } = { header: [], body: [] }
+
 if (departamentData.value) {
     dataTable.header.push(...['Municipio', 'ZIP Code'])
 
@@ -117,7 +102,7 @@ definePageMeta({
         <AppNarrowContent>
             <AppProse class="mx-auto">
                 <template v-if="isComponent">
-                    <component :is="asyncComponent" class="w-full" @maps="routerMap">
+                    <component :is="asyncComponent" class="w-full" @maps="redirectMap">
                     </component>
                 </template>
             </AppProse>
