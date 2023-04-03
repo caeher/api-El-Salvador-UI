@@ -6,5 +6,7 @@ export default interface IMunicipality {
         zone: {
             zonename: string
         }
-    }
+    },
+    depname: string,
+    isocode: string
 }
