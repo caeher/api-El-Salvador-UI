@@ -10,7 +10,7 @@ export default defineNuxtConfig({
         public: {
             iconSufix: '-svgrepo-com',
             // fetchUri: 'http://127.0.0.1:8000',
-            fetchUri: 'https://api-el-salvador-production.up.railway.app',
+            fetchUri: 'https://api-sv-maquilishuat.herokuapp.com',
             baseURL: '/',
             navbar
         }
@@ -62,6 +62,11 @@ export default defineNuxtConfig({
     },
     nitro: {
         preset: 'service-worker'
+    },
+    imports: {
+        dirs: [
+            "~/utils",
+        ]
     }
 })
 
