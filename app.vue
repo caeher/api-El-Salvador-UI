@@ -18,5 +18,6 @@ html,
 body {
   /* @apply bg-slate-100 dark:bg-slate-900/95; */
   @apply dark:bg-black;
+  @apply h-full;
 }
 </style>

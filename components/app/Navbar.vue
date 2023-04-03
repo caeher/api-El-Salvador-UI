@@ -1,9 +1,26 @@
 <script setup lang="ts">
 const isNavbarOpen = ref(false)
 
+onMounted(() => {
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', function (event) {
+        if (navbar != null) {
+            if (window.scrollY > 300) {
+                navbar.classList.add('shadow');
+                navbar.classList.add('sticky');
+                navbar.classList.add('top-0');
+            } else {
+                navbar.classList.remove('shadow');
+                navbar.classList.remove('sticky');
+                navbar.classList.remove('top-0');
+            }
+        }
+    })
+})
 </script>
 <template>
-    <nav class="sticky top-0 z-50 shadow bg-white py-3 px-3 sm:px-12 md:px-24 lg:px-40 dark:bg-slate-900 dark:text-slate-300">
+    <nav id="navbar" class="z-50 transition-all bg-white py-3 px-3 sm:px-12 md:px-24 lg:px-40 dark:bg-slate-900 dark:text-slate-300">
         <div class="flex flex-wrap justify-between items-center">
             <div id="brand">
                 <NuxtLink to="/">
