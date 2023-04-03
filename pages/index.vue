@@ -1,10 +1,14 @@
 <script setup lang="ts">
-import { e } from 'unimport/dist/types-488f6d65';
-import { elSalvadorCode } from '~~/utils/el-salvador-code';
+import { elSalvadorCode } from '~~/utils/el-salvador-code'
 import {Modal, Toast} from '~~/utils/sweetalert'
 
 const router = useRouter()
 const {public: {baseURL}} = useRuntimeConfig()
+
+/**
+ * Modal de confirmación de redirección
+ * @param maps 
+ */
 function beforeRouterMap(maps: string | null) {
     if (maps) {
         const p = elSalvadorCode[maps].name
@@ -26,18 +30,21 @@ function beforeRouterMap(maps: string | null) {
                 })
             }
         }).catch((error) => {
-
+            routerMap("/");
         })
     }
 }
-
+/**
+ * Elimina los acentos y espacios en blanco y redirige
+ * @param maps 
+ */
 function routerMap(maps: string) {
     console.log(maps)
     let p = maps.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
     if (useSecureParams(p)) {
         p = p.toLowerCase().split(' ').join('-')
         router.push({
-            path: `/${p}`
+            path: `/map/${p}`
         })
     }
 
@@ -53,7 +60,8 @@ const departaments = Object.values(elSalvadorCode).map((dep: any) => {
 
 definePageMeta({
     layout: 'ui'
-})
+});
+
 </script>
 <template>
     <div>
