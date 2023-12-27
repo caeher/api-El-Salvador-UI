@@ -10,7 +10,7 @@ export default defineNuxtConfig({
         public: {
             iconSufix: '-svgrepo-com',
             // fetchUri: 'http://127.0.0.1:8000',
-            fetchUri: 'https://api-el-salvador-production.up.railway.app',
+            fetchUri: 'api-sv-maquilishuat.herokuapp.com',
             baseURL: '/api-el-salvador-ui/',
             navbar
         }
