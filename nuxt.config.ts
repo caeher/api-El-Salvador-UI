@@ -11,7 +11,7 @@ export default defineNuxtConfig({
             iconSufix: '-svgrepo-com',
             // fetchUri: 'http://127.0.0.1:8000',
             fetchUri: 'api-sv-maquilishuat.herokuapp.com',
-            baseURL: '/',
+            baseURL: '',
             navbar
         }
     },
@@ -37,7 +37,7 @@ export default defineNuxtConfig({
         storageKey: 'nuxt-color-mode'
     },
     app: {
-        baseURL: '/',
+        baseURL: '',
         rootId: 'ElSalvador'
     },
     experimental: {
