@@ -2,14 +2,13 @@
 import { resolve } from 'path'
 import { navbar } from './utils/navbar'
 export default defineNuxtConfig({
-    ssr: false,
+    ssr: true,
     routeRules: {
         "/**": { cors: true }
     },
     runtimeConfig: {
         public: {
             iconSufix: '-svgrepo-com',
-            // fetchUri: 'http://127.0.0.1:8000',
             fetchUri: 'https://api-sv-maquilishuat.herokuapp.com',
             baseURL: '/',
             navbar
