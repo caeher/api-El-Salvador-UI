@@ -2,10 +2,11 @@
 import { resolve } from 'path'
 import { navbar } from './utils/navbar'
 export default defineNuxtConfig({
-    ssr: true,
+    ssr: false,
     routeRules: {
         "/**": { cors: true }
     },
+    devtools: { enabled: true },
     runtimeConfig: {
         public: {
             iconSufix: '-svgrepo-com',
